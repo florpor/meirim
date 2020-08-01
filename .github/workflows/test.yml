@@ -58,3 +58,16 @@ jobs:
 
       - name: test
         run: npm run test
+
+      - name: build frontend
+        run: npm run build
+
+      - name: serve
+        env:
+          NODE_CONFIG: "{\"database\": {\"connection\": {\"host\": \"localhost\", \"port\": \"33060\", \"user\": \"root\", \"password\": \"meirim_test\", \"database\": \"meirim_test\"}}, \"email\": {\"options\": {\"host\": \"smtp.ethereal.email\", \"port\": 587, \"secure\": false, \"auth\": {\"user\": \"beaulah.hammes@ethereal.email\", \"pass\": \"urkMZ4p4z9ubjwdeC5\"}}}}"
+        run: |
+          npm run serve &
+          sleep 3
+
+      - name: e2e test
+        run: $(npm bin)/cypress run
