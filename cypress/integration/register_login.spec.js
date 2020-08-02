@@ -55,6 +55,7 @@ context('Register and login', () => {
   describe('Login flow', () => {
     it('alerts should not be visible from the get go', () => {
       cy.get('a[href*="/sign/in"]')
+        .first()
         .click();
 
       cy.url().should('include', '/sign/in');
@@ -65,6 +66,7 @@ context('Register and login', () => {
 
     it('login with wrong credentials should not work', () => {
       cy.get('a[href*="/sign/in"]')
+        .first()
         .click();
 
       cy.url().should('include', '/sign/in');
@@ -85,6 +87,7 @@ context('Register and login', () => {
 
     it('login with existing credentials should work', () => {
       cy.get('a[href*="/sign/in"]')
+        .first()
         .click();
 
       cy.url().should('include', '/sign/in');
