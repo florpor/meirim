@@ -57,14 +57,19 @@ context('Register and login', () => {
       cy.get('a[href*="/sign/in"]')
         .click();
 
+      cy.url().should('include', '/sign/in');
+
       cy.get('div.alert-danger')
         .should('not.be.visible');
     });
 
     it('login with wrong credentials should not work', () => {
       cy.get('a[href*="/sign/in"]')
-        .click()
-        .get('input#loginEmail')
+        .click();
+
+      cy.url().should('include', '/sign/in');
+
+      cy.get('input#loginEmail')
         .type('invalid@email.invalid')
         .get('input#loginPassword')
         .type('1234');
@@ -80,8 +85,11 @@ context('Register and login', () => {
 
     it('login with existing credentials should work', () => {
       cy.get('a[href*="/sign/in"]')
-        .click()
-        .get('input#loginEmail')
+        .click();
+
+      cy.url().should('include', '/sign/in');
+
+      cy.get('input#loginEmail')
         .type('test@meirim.org')
         .get('input#loginPassword')
         .type('1234');
@@ -96,6 +104,8 @@ context('Register and login', () => {
 
       cy.get('form.rectangle > .container-title')
         .should('be.visible');
+
+      cy.url().should('include', '/alerts');
     });
   });
 });
