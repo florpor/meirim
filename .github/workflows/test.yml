@@ -81,6 +81,7 @@ jobs:
 
       - name: e2e test
         run: $(npm bin)/cypress run --browser chrome --headless
+        continue-on-error: true
 
       - name: upload failed test screenshots
         run: |
