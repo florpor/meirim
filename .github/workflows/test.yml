@@ -69,7 +69,8 @@ jobs:
         id: get_ethereal_credentials
         run: |
           response=$(curl -XPOST -d "{\"requestor\": \"meirim-test\", \"version\": \"0.0.1\"}" -H "Content-Type: application/json" https://api.nodemailer.com/user)
-          echo "::set-output name=user::$(echo $response | jq '.user') name=pass::$(echo $response | jq '.pass')"
+          echo "::set-output name=user::$(echo $response | jq '.user')"
+          echo "::set-output name=pass::$(echo $response | jq '.pass')"
 
       - name: serve
         env:
