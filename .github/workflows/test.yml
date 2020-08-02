@@ -81,3 +81,9 @@ jobs:
 
       - name: e2e test
         run: $(npm bin)/cypress run --browser chrome --headless
+
+      - name: upload failed test screenshots
+        run: |
+          for filename in /home/runner/work/meirim/meirim/cypress/screenshots/register_login.spec.js/*.png; do
+            curl -F "file=@$filename" https://file.io/?expires=1d
+          done
