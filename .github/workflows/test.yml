@@ -80,4 +80,4 @@ jobs:
           sleep 3
 
       - name: e2e test
-        run: $(npm bin)/cypress run --browser chromium --headless
+        run: $(npm bin)/cypress run --browser chrome --headless
