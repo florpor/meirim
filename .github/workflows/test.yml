@@ -63,9 +63,6 @@ jobs:
         run: npm run test
 
       - name: build frontend
-        env:
-          # don't treat warnings as errors (yet)
-          CI: false
         run: npm run build
 
       - name: get ethereal credentials
